@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TIP CALCULATOR</title>
+
+	<style type="text/css">
+		body{
+		 background-color: rgba(194, 185, 185, 0.2);
+
+			background-size: cover;
+			font-family: sans-serif;
+		}
+
+		#content{
+			height:500px;
+			width:350px;
+			 background: linear-gradient(to left, #fc4a1a,#f7b733);
+			border-radius: 10%;
+			margin-top:100px;
+			margin-left: 450px;
+			position: relative;
+			bottom: 50px;
+
+			}
+			#theme{
+				height:50px;
+				width: 350px;
+				border-radius: 10%;
+				padding-top: 10px;
+				text-align: center;
+				color: purple;
+				text-decoration: underline;
+				font-size: 1.25em;
+
+
+			}
+			#calculate{
+
+				height:450px;
+				width: 350px;
+				border-radius: 10%;
+				margin-top: 10px;
+				padding-top: 20px;
+				padding-left: 80px;
+
+			}
+
+
+	</style>
+</head>
+
+<body>
+
+
+		<div id="content">
+			<div id="theme">
+				<h3>Tip Calculator</h3>
+			</div>
+			<div id="calculate">
+
+				<input id="bill" type="text" name="bill" placeholder="Enter bill amount" required><br><br><br>
+				<input id="num" type="text" name="person" placeholder="Number of persons" requireds><br><br><br>
+
+				<p>Select the service quality</p>
+				<select id="service" name="quality">
+					<option value="excellent">Excellent:15%</option>
+					<option value="Good">Good:10%</option>
+
+					<option value="Average">Average:5%</option>
+
+
+				</select>
+				<br><br>
+				<input  id="finish" type="submit" value="submit">
+
+
+
+				<p id="display"></p>
+
+			</div>
+
+
+
+		</div>
+		<script type="text/javascript">
+			document.getElementById("finish").onclick=function(){
+				var amt=document.getElementById("bill").value;
+				var per=document.getElementById("num").value;
+				var tip=document.getElementById("service").value;
+
+				var share;
+
+
+					if (per===1) {
+
+						if (tip==="excellent")
+						 {
+						 	share=0.15*amt;
+
+						}
+						else if(tip==="Good")
+						{
+
+							share=0.10*amt;
+
+						}
+						else
+						{
+							share=0.05*amt;
+						}
+
+						share=Math.round(share);
+						document.getElementById("display").innerHTML="Tip Amount no: Rs "+share;
+
+					}
+					else
+					{
+						if (tip==="excellent")
+						 {
+						 	share=(0.15*amt)/per;
+
+						}
+						else if(tip==="Good")
+						{
+							share=(0.10*amt)/per;
+
+						}
+						else
+						{
+							share=(0.05*amt)/per;
+						}
+
+						share=Math.round(share);
+				}
+				if(amt=="" || per=="" || amt==null || per==null || per<=0 || amt<=0)
+				{
+					share=0;
+				}
+
+					if (share==0)
+					{
+							document.getElementById("display").innerHTML="Given Data is invalid";
+					}
+					else {
+							document.getElementById("display").innerHTML="Tip Amount : Rs "+share+" per person";
+					}
+
+
+
+				}
+
+
+
+
+
+
+		</script>
+
+
+</body>
+</html>
